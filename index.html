@@ -113,6 +113,14 @@
     .tbl-wrap { overflow-x: auto; }
     @media (max-width: 520px) { .barrow { grid-template-columns: 90px 1fr 56px; } }
 
+
+    /* polish: aligned inputs, chart label halo, next-step link */
+    .inputs, .adv { align-items: end; }
+    #chart .cap { paint-order: stroke; stroke: var(--paper-raised); stroke-width: 4px; stroke-linejoin: round; }
+    .next-step { border: 1px solid var(--rule); border-left: 4px solid var(--ink); background: var(--paper-raised); padding: 14px 16px; margin: 24px 0 0; }
+    .next-step .k { color: var(--ink-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+    .next-step a { font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; text-transform: lowercase; }
+    .next-step p { margin: 4px 0 0; color: var(--ink-muted); font-size: 0.92rem; }
   </style>
 </head>
 <body>
@@ -126,12 +134,12 @@
     <section class="panel">
       <div class="inputs">
         <label class="field">Revenue you actually booked in the period <span class="suffix">$</span>
-          <input type="number" id="rev" min="1" step="1000" inputmode="numeric"></label>
+          <input autocomplete="off" type="number" id="rev" min="1" step="1000" inputmode="numeric"></label>
         <label class="field">Contribution margin before ad spend <span class="suffix">%</span>
-          <input type="number" id="mar" min="1" max="100" step="1" inputmode="decimal"></label>
+          <input autocomplete="off" type="number" id="mar" min="1" max="100" step="1" inputmode="decimal"></label>
       </div>
       <label class="field" style="margin-top:12px">One row per platform: name, spend, revenue the platform says it drove
-        <textarea id="rows" rows="6" spellcheck="false" style="font-family: ui-monospace, Menlo, monospace; font-size: .9rem"></textarea></label>
+        <textarea autocomplete="off" id="rows" rows="6" spellcheck="false" style="font-family: ui-monospace, Menlo, monospace; font-size: .9rem"></textarea></label>
       <p class="hint">Use the same period for everything. Revenue is from your own system (store, payments, CRM). The platform figures come from each platform's own reporting, at the attribution setting you normally use. The pre-filled rows are made up.</p>
       <div id="err" role="alert"></div>
     </section>
@@ -199,6 +207,7 @@ platform vs ceiling = (claims / spend) / MER = claims / your revenue</div>
       <p><b>This does not measure incrementality.</b> It shows what is impossible and what is the ceiling. A holdout test shows what is real.</p>
     </section>
 
+    <section class="next-step"><div class="k">next</div><a href="https://roas-haircut.benjads.com/">roas haircut</a><p>Find out how much of the reported ROAS has to be real for the ads to pay.</p></section>
     <footer class="site-foot">
       <picture><source media="(prefers-color-scheme: dark)" srcset="logo/benjads-footnote-paper-transparent.svg"><img src="logo/benjads-footnote-olive-transparent.svg" alt="ben.j.ads"></picture>
       <p><span class="tag">1</span>Arithmetic on your revenue, spend and platform claims. MER as a ceiling, not an estimate. Marketing science, given away free, for people who spend money.</p>
